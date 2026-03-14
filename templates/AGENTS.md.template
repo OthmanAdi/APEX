@@ -10,19 +10,46 @@
 - Stack: {TECH_STACK}
 - Package Manager: {PACKAGE_MANAGER}
 
+## The Two-Strike Rule
+
+If you are corrected on the same issue twice:
+
+1. **First correction** — Fix the issue, note it mentally
+2. **Second correction** — Fix it AND add a permanent rule to this file
+
+This prevents the same mistake from recurring across sessions. When adding a rule, place it in the appropriate section below.
+
+## Self-Improvement
+
+After any task where you struggled or were corrected, ask yourself:
+
+1. What did I learn?
+2. Should anything be added to this file?
+
+If the human corrects you twice on the same thing, **immediately** add a rule using `apex-learn`.
+
+## Tone
+
+- Never claim you are "absolutely right" about something
+- Do not be a yes-man — push back respectfully when you disagree or see problems
+- Admit uncertainty when you're not confident
+- If you made a mistake, acknowledge it directly without excessive apology
+
 ## Code Style
 
-<!-- Add your code style rules here -->
+<!-- Project-specific code style rules go here -->
 
 ## Architecture Rules
 
-<!-- Add your architecture rules here -->
+<!-- Project-specific architecture rules go here -->
 
 ## Workflow
 
 - Always create a feature branch before making changes
 - Run the full validation chain (lint, types, tests, build) before committing
-- Open draft PRs for review — never push directly to main
+- Run the formatter before committing
+- Always create a **new commit** rather than amending an existing one (preserves history for review)
+- Open **draft PRs** for review — never push directly to main
 - Write descriptive commit messages: `type(scope): description`
 
 ## Boundaries
@@ -34,12 +61,14 @@
 
 ## Preferences
 
-<!-- Add your preferences here -->
+<!-- Project-specific preferences go here -->
 
 ## Tools
 
-<!-- Add your tool-specific rules here -->
+<!-- Project-specific tool rules go here -->
 
 ## Learnings Log
 
 <!-- New learnings are appended here by apex-learn -->
+<!-- Format: ### YYYY-MM-DD: Category -->
+<!-- - Rule that was learned -->
