@@ -115,3 +115,32 @@ gh pr create --draft --title "apex: {task description}" --body-file /tmp/apex-pr
 ## Output
 
 A draft PR with a complete audit trail of checkpoints, decisions, and human feedback incorporated at each stage.
+
+**Example PR body with checkpoint log:**
+
+```markdown
+## apex: Refactor payment module to Stripe v3
+
+### Execution Log
+
+#### Phase 1: Data Layer ✅
+- Updated PaymentIntent schema
+- Added new webhook event types
+- **Human feedback:** "Use camelCase for new fields" → Applied
+
+#### Phase 2: Business Logic ✅
+- Migrated to PaymentIntents API
+- Added idempotency keys
+- **Human feedback:** "Add retry logic for network errors" → Applied
+
+#### Phase 3: API Layer ✅
+- Updated `/payments/create` endpoint
+- Added `/payments/confirm` endpoint
+- **Human feedback:** None needed
+
+#### Phase 4: Tests ✅
+- 23 new tests, 0 failing
+- Updated 8 existing tests
+
+### Validation: ✅ All checks pass
+```

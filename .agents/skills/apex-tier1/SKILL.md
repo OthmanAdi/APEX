@@ -86,3 +86,30 @@ The PR body must include:
 ## Output
 
 A draft PR on a feature branch with all acceptance criteria met and validation passing.
+
+**Example PR body:**
+
+```markdown
+## apex: Add unit tests for UserService
+
+### Task
+Add unit tests for the UserService class
+
+### Acceptance Criteria
+- [x] Tests cover all public methods of UserService
+- [x] Tests cover error/edge cases documented in the class
+- [x] All tests pass
+- [x] Coverage does not decrease
+- [x] Lint passes
+
+### Validation Results
+| Step | Status |
+|------|--------|
+| Lint | ✅ PASS |
+| Types | ✅ PASS |
+| Tests | ✅ PASS |
+| Build | ✅ PASS |
+
+### Files Changed
+- `tests/services/user-service.test.ts` (new, 147 lines)
+```

@@ -77,3 +77,37 @@ Cross-reference the spec against the source code. For each behavior documented, 
 ## Output
 
 The final deliverable is a Markdown specification file in `specs/` that another agent (or `apex-replatform`) can consume to implement the feature in a new architecture without needing access to the original source code.
+
+**Example output location:** `specs/user-authentication.md`
+
+```markdown
+# Feature: User Authentication
+
+## Overview
+Handles user login, session management, and token refresh for the web application.
+
+## Behavior Contract
+
+### Inputs
+| Name | Type | Source | Required |
+|------|------|--------|----------|
+| email | string | request.body | yes |
+| password | string | request.body | yes |
+
+### Outputs
+| Name | Type | Destination |
+|------|------|-------------|
+| accessToken | JWT | response.json |
+| refreshToken | string | httpOnly cookie |
+
+### Side Effects
+1. Creates session record in `sessions` table
+2. Emits `user.logged_in` event
+
+## Edge Cases
+1. **Invalid credentials** — Returns 401 with generic message
+2. **Account locked** — Returns 403 after 5 failed attempts
+
+## Migration Notes
+- [VERIFY] Confirm bcrypt rounds (currently 12)
+```

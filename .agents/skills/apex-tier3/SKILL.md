@@ -86,3 +86,24 @@ At the end of the session:
 ## Output
 
 Working code with a complete decision log. Any recurring patterns or preferences discovered during the session are candidates for AGENTS.md updates via `apex-learn`.
+
+**Example decision log:**
+
+```markdown
+## Decision Log — Event System Architecture
+
+| # | Decision | Rationale | Alternatives Considered |
+|---|----------|-----------|------------------------|
+| 1 | Use EventEmitter over message queue | Simpler for current scale, can migrate later | RabbitMQ, Redis pub/sub |
+| 2 | Typed events with Zod schemas | Runtime validation + TypeScript inference | io-ts, manual types |
+| 3 | Async handlers by default | Non-blocking, better throughput | Sync handlers |
+| 4 | Dead letter queue for failures | Debugging + replay capability | Log and drop |
+
+## Open Questions
+- [ ] Should we add event versioning now or later?
+- [ ] Rate limiting for high-frequency events?
+
+## Learnings for AGENTS.md
+- Always use typed events (add to Architecture Rules)
+- Prefer async handlers unless order matters (add to Preferences)
+```

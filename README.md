@@ -14,6 +14,7 @@ A cross-platform skill framework for AI-driven replatforming, migration, and hig
 [![Gemini CLI](https://img.shields.io/badge/Gemini%20CLI-Skills-4285F4)](https://geminicli.com/docs/cli/skills/)
 [![Agent Skills Standard](https://img.shields.io/badge/standard-agentskills.io-green)](https://agentskills.io)
 [![Cross Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)](https://github.com/OthmanAdi/APEX)
+[![SkillCheck Passed](https://raw.githubusercontent.com/olgasafonova/skillcheck-free/main/skill-check/passed.svg)](https://getskillcheck.com)
 [![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/OthmanAdi/APEX)
 
 <details>

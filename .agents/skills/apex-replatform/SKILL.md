@@ -85,3 +85,28 @@ Create a draft PR with this checklist in the description.
 ## Output
 
 A working implementation in the target architecture that matches the specification, with a passing validation chain and a draft PR ready for human review.
+
+**Example PR body:**
+
+```markdown
+## apex: Implement user-authentication from spec
+
+### Spec Coverage
+| Section | Status | Notes |
+|---------|--------|-------|
+| Inputs | ✅ PASS | All parameters handled |
+| Outputs | ✅ PASS | JWT + cookie response |
+| Side Effects | ✅ PASS | Session + event implemented |
+| Edge Cases | ✅ PASS | 401/403 paths verified |
+
+### Validation Results
+- Lint: ✅ PASS
+- Types: ✅ PASS
+- Tests: ✅ PASS (12 new, 0 failing)
+- Build: ✅ PASS
+
+### Files Changed
+- `src/auth/login.ts` (new)
+- `src/auth/session.ts` (new)
+- `src/events/user.ts` (modified)
+```

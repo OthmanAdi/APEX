@@ -107,3 +107,27 @@ If a contradiction is found, present both rules to the human and ask which takes
 ## Output
 
 An updated AGENTS.md file with the new rule appended to the correct section, committed with message `docs: apex-learn — add rule for {category}`.
+
+**Example diff:**
+
+```diff
+ ## Tools
+
++- Always use `pnpm` instead of `npm` for package management
++- Run `pnpm install --frozen-lockfile` in CI environments
+
+ ## Learnings Log
+
++### 2026-03-14: Package Manager
++- Agent used npm twice before this rule was added
++- Root cause: default behavior, no explicit instruction
+```
+
+**Example commit:**
+
+```
+docs: apex-learn — add rule for tools
+
+Added package manager preference after two-strike correction.
+Agent was defaulting to npm instead of pnpm.
+```
