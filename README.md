@@ -1,15 +1,65 @@
 # APEX
 
+> **Work at Kilo Speed** — the methodology that turned a 6-12 month replatforming project into **4 weeks of solo work**.
+
 **Agentic Production Engineering eXecution**
 
-A cross-platform skill framework for AI-driven replatforming, migration, and high-velocity engineering workflows. Inspired by the [Kilo Speed methodology](https://blog.kilo.ai/p/inside-kilo-speed-how-one-engineer-52c) — where one engineer completed a 6-12 month replatforming project in ~4 weeks.
+A cross-platform skill framework for AI-driven replatforming, migration, and high-velocity engineering workflows. Inspired by the [Kilo Speed methodology](https://blog.kilo.ai/p/inside-kilo-speed-how-one-engineer-52c).
 
-[![GitHub stars](https://img.shields.io/github/stars/OthmanAdi/APEX?style=social)](https://github.com/OthmanAdi/APEX)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Cross Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)](https://github.com/OthmanAdi/APEX)
+[![Claude Code Skill](https://img.shields.io/badge/Claude%20Code-Skill-green)](https://code.claude.com/docs/en/skills)
+[![Cursor Skills](https://img.shields.io/badge/Cursor-Skills-purple)](https://docs.cursor.com/context/skills)
+[![Windsurf Skills](https://img.shields.io/badge/Windsurf-Skills-00D4AA)](https://docs.codeium.com/windsurf)
+[![Codex CLI](https://img.shields.io/badge/Codex%20CLI-Skills-orange)](https://github.com/openai/codex)
+[![Gemini CLI](https://img.shields.io/badge/Gemini%20CLI-Skills-4285F4)](https://geminicli.com/docs/cli/skills/)
 [![Agent Skills Standard](https://img.shields.io/badge/standard-agentskills.io-green)](https://agentskills.io)
+[![Cross Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)](https://github.com/OthmanAdi/APEX)
+[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/OthmanAdi/APEX)
+
+<details>
+<summary><strong>💬 A Note from the Author</strong></summary>
+
+I created APEX after studying how Mark IJbema at Kilo Code completed a 6-12 month replatforming project in just 4 weeks. His secret wasn't better tools — it was a **methodology** for working with AI agents at different trust levels.
+
+APEX operationalizes that methodology into 6 reusable skills. If it helps you work faster, that's all I wanted.
+
+</details>
+
+<details>
+<summary><strong>📊 Benchmarks (Coming Soon)</strong></summary>
+
+APEX is being formally evaluated using Anthropic's skill-creator framework. Results will be published here once testing is complete.
+
+**Planned metrics:**
+- Velocity improvement (traditional vs APEX)
+- Task completion rate
+- Agent autonomy levels
+
+[Follow the repo](https://github.com/OthmanAdi/APEX) to get notified when benchmarks are published.
+
+</details>
+
+<details>
+<summary><strong>🤝 Community Showcase</strong></summary>
+
+This section will feature community forks and extensions once available.
+
+*Built something with APEX? [Open an issue](https://github.com/OthmanAdi/APEX/issues) to get listed!*
+
+</details>
 
 ---
+
+## Why APEX?
+
+In March 2026, [Kilo Code published how one engineer](https://blog.kilo.ai/p/inside-kilo-speed-how-one-engineer-52c) completed a VS Code extension replatforming in 4 weeks — a project traditionally estimated at 6-12 months with a team.
+
+His secret wasn't magic. It was **calibrated delegation**:
+
+> "I don't think there are any tasks I wouldn't do with an LLM. It's about finding the right scope."
+> — Mark IJbema, Kilo Code
+
+APEX turns this methodology into 6 installable skills.
 
 ## The Problem
 
@@ -46,9 +96,7 @@ APEX transforms how you work with AI agents by providing:
                            (Two-strike rule → AGENTS.md)
 ```
 
-## Installation
-
-### Quick Install
+## Quick Install
 
 ```bash
 # Clone the repository
@@ -58,6 +106,8 @@ cd APEX
 # Install all skills to your agent skills directory
 cp -r .agents/skills/* ~/.agents/skills/
 ```
+
+Works with Claude Code, Cursor, Windsurf, Codex CLI, Gemini CLI, and 40+ agents supporting the [Agent Skills](https://agentskills.io) spec.
 
 ### Manual Install (Individual Skills)
 
@@ -203,17 +253,6 @@ APEX/
 └── README.md
 ```
 
-## Compatibility
-
-| Agent | Status | Notes |
-|-------|--------|-------|
-| Claude Code | ✅ Full | Primary target |
-| Cursor | ✅ Full | SKILL.md format supported |
-| Windsurf | ✅ Full | SKILL.md format supported |
-| Codex CLI | ✅ Full | SKILL.md format supported |
-| OpenAI Agents | ✅ Full | Via agentskills.io standard |
-| Continue | ⚠️ Partial | May need adaptation |
-
 ## What Makes APEX Different
 
 | Traditional Approach | APEX Approach |
@@ -224,6 +263,57 @@ APEX/
 | Knowledge lost between tasks | Persistent AGENTS.md memory |
 | Single-tier agent usage | Three calibrated tiers |
 | Ad-hoc corrections | Two-strike rule automation |
+
+## Key Rules
+
+1. **Decompose First** — Never replatform without a spec from `apex-decompose`
+2. **Calibrate Your Tier** — Match agent autonomy to task complexity
+3. **The Two-Strike Rule** — Second correction = permanent rule in AGENTS.md
+4. **Validate Every Step** — Run `validate.sh` after each implementation
+5. **Capture Learnings** — Use `apex-learn` after any friction
+
+## When to Use APEX
+
+**Use APEX for:**
+- Replatforming projects (moving to new frameworks/architectures)
+- Migration projects (legacy to modern stack)
+- Large codebase refactoring
+- Multi-step feature implementation
+- Projects requiring parallel agent workflows
+
+**Skip for:**
+- Simple bug fixes
+- Single-file edits
+- Quick lookups
+- Well-defined, small tasks
+
+<details>
+<summary><strong>📦 Releases</strong></summary>
+
+### Current Version: v1.0.0
+
+| Version | Highlights |
+|---------|------------|
+| **v1.0.0** | Initial release — 6 skills, cross-platform scripts, AGENTS.md template |
+
+[View all releases](https://github.com/OthmanAdi/APEX/releases)
+
+</details>
+
+<details>
+<summary><strong>🛠️ Supported Agents (7 Platforms)</strong></summary>
+
+| Agent | Status | Notes |
+|-------|--------|-------|
+| Claude Code | ✅ Full Support | Primary target, all features |
+| Cursor | ✅ Full Support | SKILL.md format supported |
+| Windsurf | ✅ Full Support | SKILL.md format supported |
+| Codex CLI | ✅ Full Support | SKILL.md format supported |
+| Gemini CLI | ✅ Full Support | Via agentskills.io standard |
+| OpenAI Agents | ✅ Full Support | Via agentskills.io standard |
+| Continue | ⚠️ Partial | May need adaptation |
+
+</details>
 
 ## Contributing
 
