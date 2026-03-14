@@ -5,10 +5,18 @@ on:
     branches: [main]
     paths:
       - '.agents/skills/**'
+      - 'README.md'
+      - 'scripts/install.sh'
+      - 'scripts/install.ps1'
+      - '.github/workflows/skill-validation.yml'
   pull_request:
     branches: [main]
     paths:
       - '.agents/skills/**'
+      - 'README.md'
+      - 'scripts/install.sh'
+      - 'scripts/install.ps1'
+      - '.github/workflows/skill-validation.yml'
   workflow_dispatch:
 
 jobs:
@@ -24,6 +32,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - name: Verify local checkout installs with Skills CLI
+        run: |
+          npx -y skills add . -g -y
+
+          for skill in apex-decompose apex-learn apex-replatform apex-tier1 apex-tier2 apex-tier3; do
+            test -f "$HOME/.agents/skills/$skill/SKILL.md"
+          done
 
       - name: Install Tessl CLI
         run: npm install -g @tessl/cli
