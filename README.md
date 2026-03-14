@@ -6,17 +6,19 @@
 
 A cross-platform skill framework for AI-driven replatforming, migration, and high-velocity engineering workflows. Inspired by the [Kilo Speed methodology](https://blog.kilo.ai/p/inside-kilo-speed-how-one-engineer-52c).
 
-[![Skill Validation](https://github.com/OthmanAdi/APEX/actions/workflows/skill-validation.yml/badge.svg)](https://github.com/OthmanAdi/APEX/actions/workflows/skill-validation.yml)
+[![Tessl Validated](https://github.com/OthmanAdi/APEX/actions/workflows/skill-validation.yml/badge.svg)](https://github.com/OthmanAdi/APEX/actions/workflows/skill-validation.yml)
+[![SkillCheck Passed](https://raw.githubusercontent.com/olgasafonova/skillcheck-free/main/skill-check/passed.svg)](https://getskillcheck.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Claude Code Skill](https://img.shields.io/badge/Claude%20Code-Skill-green)](https://code.claude.com/docs/en/skills)
-[![Cursor Skills](https://img.shields.io/badge/Cursor-Skills-purple)](https://docs.cursor.com/context/skills)
-[![Windsurf Skills](https://img.shields.io/badge/Windsurf-Skills-00D4AA)](https://docs.codeium.com/windsurf)
+[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/OthmanAdi/APEX)
+
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-green)](https://code.claude.com/docs/en/skills)
+[![Cursor](https://img.shields.io/badge/Cursor-Skills-purple)](https://docs.cursor.com/context/skills)
+[![Windsurf](https://img.shields.io/badge/Windsurf-Skills-00D4AA)](https://docs.codeium.com/windsurf)
 [![Codex CLI](https://img.shields.io/badge/Codex%20CLI-Skills-orange)](https://github.com/openai/codex)
 [![Gemini CLI](https://img.shields.io/badge/Gemini%20CLI-Skills-4285F4)](https://geminicli.com/docs/cli/skills/)
+
 [![Agent Skills Standard](https://img.shields.io/badge/standard-agentskills.io-green)](https://agentskills.io)
 [![Cross Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)](https://github.com/OthmanAdi/APEX)
-[![SkillCheck Passed](https://raw.githubusercontent.com/olgasafonova/skillcheck-free/main/skill-check/passed.svg)](https://getskillcheck.com)
-[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/OthmanAdi/APEX)
 
 <details>
 <summary><strong>💬 A Note from the Author</strong></summary>
