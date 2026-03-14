@@ -116,16 +116,68 @@ APEX transforms how you work with AI agents by providing:
 
 ## Quick Install
 
+### Recommended for clones (registers skills correctly)
+
 ```bash
 # Clone the repository
 git clone https://github.com/OthmanAdi/APEX.git
 cd APEX
 
-# Install all skills to your agent skills directory
+# Install globally from this local checkout
+npx skills add . -g -y
+```
+
+This is the most reliable install path for cloned checkouts because the Skills CLI discovers all 6 skills from the local repo and links/registers them for supported agents.
+
+### Direct global install from GitHub
+
+```bash
+npx skills add OthmanAdi/APEX -g -y
+```
+
+### Helper scripts
+
+**Linux/macOS**
+```bash
+./scripts/install.sh
+```
+
+**Windows PowerShell**
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1
+```
+
+These scripts prefer `npx skills add . -g -y` and fall back to copying the skills into `~/.agents/skills` if `npx` is unavailable.
+
+> After installing, restart your agent or start a new session. Many agents only discover skills at startup, so skills installed mid-session may not appear until reload.
+
+### Verify install
+
+**Linux/macOS**
+```bash
+find ~/.agents/skills -maxdepth 1 -type d -name 'apex-*'
+```
+
+**Windows PowerShell**
+```powershell
+Get-ChildItem "$HOME/.agents/skills" -Directory | Where-Object { $_.Name -like 'apex-*' }
+```
+
+For Claude Code, you can also verify mirrored entries under `~/.claude/skills/`.
+
+### Manual Install (Fallback)
+
+```bash
+# Install all skills to your universal agent skills directory
 cp -r .agents/skills/* ~/.agents/skills/
 ```
 
-Works with Claude Code, Cursor, Windsurf, Codex CLI, Gemini CLI, and 40+ agents supporting the [Agent Skills](https://agentskills.io) spec.
+**Windows PowerShell**
+```powershell
+Copy-Item -Recurse .agents/skills/* $HOME/.agents/skills/
+```
+
+Manual copy works for agents that read from `~/.agents/skills` directly. If the skills do not show up, use `npx skills add . -g -y` instead and restart your agent.
 
 ### Manual Install (Individual Skills)
 
