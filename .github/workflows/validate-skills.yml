@@ -1,0 +1,142 @@
+name: Validate Skills (Structure)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.agents/skills/**'
+      - '.github/workflows/validate-skills.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - '.agents/skills/**'
+
+jobs:
+  structure-validation:
+    name: Structure Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate skill structure
+        run: |
+          echo "=== Skill Structure Validation ==="
+          echo ""
+
+          ERRORS=0
+
+          for skill_dir in .agents/skills/*/; do
+            skill_name=$(basename "$skill_dir")
+            echo "--- Checking: $skill_name ---"
+
+            # Check SKILL.md exists
+            if [ ! -f "$skill_dir/SKILL.md" ]; then
+              echo "❌ Missing SKILL.md"
+              ERRORS=$((ERRORS + 1))
+              continue
+            fi
+            echo "✅ SKILL.md exists"
+
+            # Check YAML frontmatter
+            if ! head -1 "$skill_dir/SKILL.md" | grep -q "^---"; then
+              echo "❌ Missing YAML frontmatter"
+              ERRORS=$((ERRORS + 1))
+              continue
+            fi
+            echo "✅ Has YAML frontmatter"
+
+            # Check name field
+            if ! grep -q "^name:" "$skill_dir/SKILL.md"; then
+              echo "❌ Missing name field"
+              ERRORS=$((ERRORS + 1))
+            else
+              echo "✅ Has name field"
+            fi
+
+            # Check description field
+            if ! grep -q "^description:" "$skill_dir/SKILL.md"; then
+              echo "❌ Missing description field"
+              ERRORS=$((ERRORS + 1))
+            else
+              echo "✅ Has description field"
+            fi
+
+            # Check for referenced files
+            if grep -q "references/" "$skill_dir/SKILL.md"; then
+              if [ ! -d "$skill_dir/references" ]; then
+                echo "❌ References mentioned but directory missing"
+                ERRORS=$((ERRORS + 1))
+              else
+                echo "✅ References directory exists"
+              fi
+            fi
+
+            # Check scripts exist if referenced
+            if grep -q '${CLAUDE_SKILL_DIR}/scripts/' "$skill_dir/SKILL.md"; then
+              if [ ! -d "$skill_dir/scripts" ]; then
+                echo "❌ Scripts referenced but directory missing"
+                ERRORS=$((ERRORS + 1))
+              else
+                echo "✅ Scripts directory exists"
+              fi
+            fi
+
+            echo ""
+          done
+
+          echo "=== Summary ==="
+          if [ "$ERRORS" -gt 0 ]; then
+            echo "::error::Found $ERRORS structural issues"
+            exit 1
+          else
+            echo "✅ All skills pass structure validation"
+          fi
+
+  cross-platform-scripts:
+    name: Cross-Platform Script Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check script pairs exist
+        run: |
+          echo "=== Cross-Platform Script Validation ==="
+          echo ""
+
+          WARNINGS=0
+
+          for skill_dir in .agents/skills/*/; do
+            skill_name=$(basename "$skill_dir")
+
+            if [ -d "$skill_dir/scripts" ]; then
+              echo "--- $skill_name/scripts ---"
+
+              # Find all .sh files
+              for sh_file in "$skill_dir/scripts/"*.sh; do
+                if [ -f "$sh_file" ]; then
+                  base=$(basename "$sh_file" .sh)
+                  ps1_file="$skill_dir/scripts/$base.ps1"
+
+                  if [ -f "$ps1_file" ]; then
+                    echo "✅ $base: .sh + .ps1 pair exists"
+                  else
+                    echo "⚠️ $base: .sh exists but .ps1 missing"
+                    WARNINGS=$((WARNINGS + 1))
+                  fi
+                fi
+              done
+
+              echo ""
+            fi
+          done
+
+          echo "=== Summary ==="
+          if [ "$WARNINGS" -gt 0 ]; then
+            echo "::warning::$WARNINGS script(s) missing cross-platform pair"
+          else
+            echo "✅ All scripts have cross-platform pairs"
+          fi

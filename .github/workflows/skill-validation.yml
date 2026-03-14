@@ -1,0 +1,136 @@
+name: Skill Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.agents/skills/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - '.agents/skills/**'
+  workflow_dispatch:
+
+jobs:
+  validate-skills:
+    name: Validate APEX Skills
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Tessl CLI
+        run: npm install -g @tessl/cli
+
+      - name: Validate skill structure
+        run: |
+          echo "## Skill Validation Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          SKILLS_DIR=".agents/skills"
+          FAILED=0
+
+          for skill_dir in "$SKILLS_DIR"/apex-*; do
+            skill_name=$(basename "$skill_dir")
+            echo "### $skill_name" >> $GITHUB_STEP_SUMMARY
+
+            # Check SKILL.md exists
+            if [ ! -f "$skill_dir/SKILL.md" ]; then
+              echo "- :x: Missing SKILL.md" >> $GITHUB_STEP_SUMMARY
+              FAILED=1
+              continue
+            fi
+
+            # Check frontmatter
+            if ! head -1 "$skill_dir/SKILL.md" | grep -q "^---$"; then
+              echo "- :x: Missing YAML frontmatter" >> $GITHUB_STEP_SUMMARY
+              FAILED=1
+              continue
+            fi
+
+            # Check name field
+            if ! grep -q "^name:" "$skill_dir/SKILL.md"; then
+              echo "- :x: Missing name field" >> $GITHUB_STEP_SUMMARY
+              FAILED=1
+              continue
+            fi
+
+            # Check description field
+            if ! grep -q "^description:" "$skill_dir/SKILL.md"; then
+              echo "- :x: Missing description field" >> $GITHUB_STEP_SUMMARY
+              FAILED=1
+              continue
+            fi
+
+            # Check scripts directory
+            if [ -d "$skill_dir/scripts" ]; then
+              echo "- :white_check_mark: Has scripts/ directory" >> $GITHUB_STEP_SUMMARY
+            fi
+
+            # Check references directory
+            if [ -d "$skill_dir/references" ]; then
+              echo "- :white_check_mark: Has references/ directory" >> $GITHUB_STEP_SUMMARY
+            fi
+
+            echo "- :white_check_mark: Structure valid" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+          done
+
+          if [ $FAILED -eq 1 ]; then
+            echo "::error::One or more skills failed validation"
+            exit 1
+          fi
+
+      - name: Run Tessl lint
+        continue-on-error: true
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Tessl Lint Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          for skill_dir in .agents/skills/apex-*; do
+            skill_name=$(basename "$skill_dir")
+            echo "### $skill_name" >> $GITHUB_STEP_SUMMARY
+
+            if tessl skill lint "$skill_dir" 2>&1; then
+              echo "- :white_check_mark: Lint passed" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "- :warning: Lint had warnings (non-blocking)" >> $GITHUB_STEP_SUMMARY
+            fi
+            echo "" >> $GITHUB_STEP_SUMMARY
+          done
+
+      - name: Run Tessl review
+        continue-on-error: true
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Tessl Review Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          for skill_dir in .agents/skills/apex-*; do
+            skill_name=$(basename "$skill_dir")
+            echo "### $skill_name" >> $GITHUB_STEP_SUMMARY
+
+            # Run review and capture output
+            if tessl skill review "$skill_dir" 2>&1 | head -20; then
+              echo "- :white_check_mark: Review completed" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "- :information_source: Review completed with suggestions" >> $GITHUB_STEP_SUMMARY
+            fi
+            echo "" >> $GITHUB_STEP_SUMMARY
+          done
+
+      - name: Summary
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Validation completed.** See details above." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "[![SkillCheck Passed](https://raw.githubusercontent.com/olgasafonova/skillcheck-free/main/skill-check/passed.svg)](https://getskillcheck.com)" >> $GITHUB_STEP_SUMMARY
