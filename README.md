@@ -1,24 +1,38 @@
-# APEX
+<p align="center">
+  <img src="assets/banner.png" alt="APEX - Agentic Production Engineering eXecution" width="100%">
+</p>
 
-> **Work at Kilo Speed** — the methodology that turned a 6-12 month replatforming project into **4 weeks of solo work**.
+<p align="center">
+  <strong>Work at Kilo Speed</strong> — the methodology that turned a 6-12 month replatforming project into <strong>4 weeks of solo work</strong>.
+</p>
+
+<p align="center">
+  <a href="https://github.com/OthmanAdi/APEX/actions/workflows/skill-validation.yml"><img src="https://github.com/OthmanAdi/APEX/actions/workflows/skill-validation.yml/badge.svg" alt="Tessl Validated"></a>
+  <a href="https://getskillcheck.com"><img src="https://raw.githubusercontent.com/olgasafonova/skillcheck-free/main/skill-check/passed.svg" alt="SkillCheck Passed"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://github.com/OthmanAdi/APEX"><img src="https://img.shields.io/badge/version-1.0.0-brightgreen" alt="Version"></a>
+</p>
+
+<p align="center">
+  <a href="https://code.claude.com/docs/en/skills"><img src="https://img.shields.io/badge/Claude%20Code-Skill-green" alt="Claude Code"></a>
+  <a href="https://docs.cursor.com/context/skills"><img src="https://img.shields.io/badge/Cursor-Skills-purple" alt="Cursor"></a>
+  <a href="https://docs.codeium.com/windsurf"><img src="https://img.shields.io/badge/Windsurf-Skills-00D4AA" alt="Windsurf"></a>
+  <a href="https://github.com/openai/codex"><img src="https://img.shields.io/badge/Codex%20CLI-Skills-orange" alt="Codex CLI"></a>
+  <a href="https://geminicli.com/docs/cli/skills/"><img src="https://img.shields.io/badge/Gemini%20CLI-Skills-4285F4" alt="Gemini CLI"></a>
+</p>
+
+<p align="center">
+  <a href="https://agentskills.io"><img src="https://img.shields.io/badge/standard-agentskills.io-green" alt="Agent Skills Standard"></a>
+  <a href="https://github.com/OthmanAdi/APEX"><img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey" alt="Cross Platform"></a>
+</p>
+
+---
+
+# APEX
 
 **Agentic Production Engineering eXecution**
 
 A cross-platform skill framework for AI-driven replatforming, migration, and high-velocity engineering workflows. Inspired by the [Kilo Speed methodology](https://blog.kilo.ai/p/inside-kilo-speed-how-one-engineer-52c).
-
-[![Tessl Validated](https://github.com/OthmanAdi/APEX/actions/workflows/skill-validation.yml/badge.svg)](https://github.com/OthmanAdi/APEX/actions/workflows/skill-validation.yml)
-[![SkillCheck Passed](https://raw.githubusercontent.com/olgasafonova/skillcheck-free/main/skill-check/passed.svg)](https://getskillcheck.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/OthmanAdi/APEX)
-
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-green)](https://code.claude.com/docs/en/skills)
-[![Cursor](https://img.shields.io/badge/Cursor-Skills-purple)](https://docs.cursor.com/context/skills)
-[![Windsurf](https://img.shields.io/badge/Windsurf-Skills-00D4AA)](https://docs.codeium.com/windsurf)
-[![Codex CLI](https://img.shields.io/badge/Codex%20CLI-Skills-orange)](https://github.com/openai/codex)
-[![Gemini CLI](https://img.shields.io/badge/Gemini%20CLI-Skills-4285F4)](https://geminicli.com/docs/cli/skills/)
-
-[![Agent Skills Standard](https://img.shields.io/badge/standard-agentskills.io-green)](https://agentskills.io)
-[![Cross Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)](https://github.com/OthmanAdi/APEX)
 
 <details>
 <summary><strong>💬 A Note from the Author</strong></summary>
